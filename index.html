@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WoW Forever</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+background:#080d17;
+font-family:Arial;
+color:white;
+}
+
+.header{
+background:#0f1728;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#ffb100;
+}
+
+.container{
+display:flex;
+}
+
+.sidebar{
+width:300px;
+background:#101827;
+height:100vh;
+padding:15px;
+overflow:auto;
+}
+
+.main{
+flex:1;
+padding:20px;
+}
+
+.card{
+background:#111e36;
+padding:15px;
+margin-bottom:15px;
+border-radius:12px;
+border:1px solid #294886;
+}
+
+.route{
+padding:12px;
+margin-bottom:10px;
+background:#08101d;
+border-radius:10px;
+cursor:pointer;
+}
+
+.route:hover{
+border:1px solid orange;
+}
+
+.task{
+padding:15px;
+margin-bottom:15px;
+background:#08101d;
+border-radius:10px;
+}
+
+button{
+background:#ffb100;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+select{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+background:#08101d;
+color:white;
+border:1px solid #385aa7;
+border-radius:8px;
+}
+
+.popup{
+position:fixed;
+bottom:15px;
+right:15px;
+width:250px;
+background:#08101d;
+border:2px solid orange;
+padding:10px;
+border-radius:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+WoW Forever
+</div>
+
+<div>
+<button>Weapons</button>
+<button>Talents</button>
+<button>Dungeons</button>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+
+<div class="card">
+
+<h3>Character</h3>
+
+<select>
+<option>Horde</option>
+<option>Alliance</option>
+</select>
+
+<select>
+<option>Orc</option>
+<option>Troll</option>
+<option>Tauren</option>
+<option>Undead</option>
+</select>
+
+<select>
+<option>Rogue</option>
+<option>Warrior</option>
+<option>Mage</option>
+<option>Hunter</option>
+</select>
+
+<select>
+<option>Combat</option>
+<option>Assassination</option>
+<option>Subtlety</option>
+</select>
+
+</div>
+
+<div class="card">
+
+<h3>Level Brackets</h3>
+
+<div class="route">1-10 Durotar</div>
+<div class="route">10-20 Barrens</div>
+<div class="route">20-30 Stonetalon</div>
+<div class="route">30-40 Desolace</div>
+<div class="route">40-50 Tanaris</div>
+<div class="route">50-60 Un'Goro</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="card">
+
+<h2>Horde Speed Route 10-20</h2>
+
+</div>
+
+<div class="task">
+
+<h3>Accept Together</h3>
+
+<label>
+<input type="checkbox">
+The Forgotten Pools
+</label>
+
+<br><br>
+
+<label>
+<input type="checkbox">
+Raptor Thieves
+</label>
+
+</div>
+
+<div class="task">
+
+<h3>Complete Together</h3>
+
+<label>
+<input type="checkbox">
+Kill Raptors
+</label>
+
+<br><br>
+
+<label>
+<input type="checkbox">
+Loot Feathers
+</label>
+
+</div>
+
+<div class="task">
+
+<h3>Turn In Together</h3>
+
+<label>
+<input type="checkbox">
+Return Crossroads
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="popup">
+
+<h3>Next Objective</h3>
+
+✅ Accept Quests
+
+<br><br>
+
+⬜ Kill Raptors
+
+<br><br>
+
+⬜ Return To Crossroads
+
+</div>
+
+</body>
+</html>
