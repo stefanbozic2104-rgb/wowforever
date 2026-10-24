@@ -1,131 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WoW Forever</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
-body{
+:root{
+--bg:#0b1020;
+--card:#131c32;
+--sidebar:#0f172a;
+--accent:#f59e0b;
+--text:#f8fafc;
+--muted:#94a3b8;
+--border:#24324e;
+}
+
+*{
 margin:0;
-background:#080d17;
-font-family:Arial;
-color:white;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+font-family:Inter,Segoe UI,sans-serif;
+height:100vh;
+overflow:hidden;
 }
 
 .header{
-background:#0f1728;
-padding:20px;
+height:70px;
+background:#08101d;
+border-bottom:1px solid var(--border);
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+padding:0 25px;
 }
 
 .logo{
-font-size:30px;
-font-weight:bold;
-color:#ffb100;
+font-size:28px;
+font-weight:700;
+color:var(--accent);
 }
 
-.container{
-display:flex;
+.layout{
+display:grid;
+grid-template-columns:300px 1fr 280px;
+height:calc(100vh - 70px);
 }
 
 .sidebar{
-width:300px;
-background:#101827;
-height:100vh;
-padding:15px;
+background:var(--sidebar);
+border-right:1px solid var(--border);
+padding:20px;
 overflow:auto;
 }
 
-.main{
-flex:1;
+.content{
 padding:20px;
+overflow:auto;
+}
+
+.rightbar{
+background:var(--sidebar);
+border-left:1px solid var(--border);
+padding:20px;
+overflow:auto;
 }
 
 .card{
-background:#111e36;
-padding:15px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:14px;
+padding:18px;
+margin-bottom:18px;
+}
+
+.card h3{
 margin-bottom:15px;
-border-radius:12px;
-border:1px solid #294886;
-}
-
-.route{
-padding:12px;
-margin-bottom:10px;
-background:#08101d;
-border-radius:10px;
-cursor:pointer;
-}
-
-.route:hover{
-border:1px solid orange;
-}
-
-.task{
-padding:15px;
-margin-bottom:15px;
-background:#08101d;
-border-radius:10px;
-}
-
-button{
-background:#ffb100;
-border:none;
-padding:10px 15px;
-border-radius:8px;
-cursor:pointer;
+color:var(--accent);
 }
 
 select{
 width:100%;
 padding:10px;
 margin-bottom:10px;
-background:#08101d;
+background:#08121f;
 color:white;
-border:1px solid #385aa7;
+border:1px solid #334155;
 border-radius:8px;
+}
+
+.route-btn{
+padding:12px;
+margin-bottom:10px;
+background:#101827;
+border-radius:10px;
+cursor:pointer;
+border:1px solid transparent;
+}
+
+.route-btn:hover{
+border-color:var(--accent);
+}
+
+.active{
+border-color:var(--accent);
+}
+
+.search{
+width:100%;
+padding:14px;
+border-radius:10px;
+background:#08121f;
+border:1px solid var(--border);
+color:white;
+margin-bottom:15px;
+}
+
+.guide-step{
+background:var(--card);
+border-radius:14px;
+padding:18px;
+margin-bottom:15px;
+}
+
+.guide-title{
+font-weight:700;
+color:var(--accent);
+margin-bottom:12px;
+font-size:18px;
+}
+
+label{
+display:block;
+padding:8px 0;
+}
+
+.progress-wrap{
+height:12px;
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progress{
+height:100%;
+width:35%;
+background:var(--accent);
+}
+
+.weapon{
+padding:12px;
+border-radius:10px;
+background:#08121f;
+margin-bottom:10px;
 }
 
 .popup{
 position:fixed;
-bottom:15px;
-right:15px;
-width:250px;
-background:#08101d;
-border:2px solid orange;
-padding:10px;
-border-radius:12px;
+bottom:20px;
+right:20px;
+width:260px;
+background:#0f172a;
+border:2px solid var(--accent);
+padding:15px;
+border-radius:15px;
+box-shadow:0 0 25px rgba(245,158,11,.3);
+}
+
+.popup-title{
+font-weight:bold;
+color:var(--accent);
+margin-bottom:10px;
+}
+
+.small{
+font-size:13px;
+color:var(--muted);
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="header">
-
-<div class="logo">
-WoW Forever
-</div>
-
+<div class="logo">WoW Forever</div>
 <div>
-<button>Weapons</button>
-<button>Talents</button>
-<button>Dungeons</button>
+Leveling Route Engine v1
+</div>
 </div>
 
-</div>
-
-<div class="container">
+<div class="layout">
 
 <div class="sidebar">
 
 <div class="card">
-
-<h3>Character</h3>
+<h3>Character Setup</h3>
 
 <select>
 <option>Horde</option>
@@ -144,6 +220,10 @@ WoW Forever
 <option>Warrior</option>
 <option>Mage</option>
 <option>Hunter</option>
+<option>Priest</option>
+<option>Druid</option>
+<option>Warlock</option>
+<option>Shaman</option>
 </select>
 
 <select>
@@ -152,75 +232,137 @@ WoW Forever
 <option>Subtlety</option>
 </select>
 
+<div class="progress-wrap">
+<div class="progress"></div>
+</div>
+
+<p class="small">
+35% Route Complete
+</p>
+
+</div>
+
+<div class="card">
+<h3>Route Navigation</h3>
+
+<div class="route-btn active">
+1-10 Durotar
+</div>
+
+<div class="route-btn">
+10-20 Barrens
+</div>
+
+<div class="route-btn">
+20-25 Stonetalon
+</div>
+
+<div class="route-btn">
+25-30 Thousand Needles
+</div>
+
+<div class="route-btn">
+30-40 Desolace
+</div>
+
+<div class="route-btn">
+40-50 Tanaris
+</div>
+
+<div class="route-btn">
+50-60 Un'Goro
+</div>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<input
+class="search"
+placeholder="Search quests, NPCs, weapons..."
+>
+
+<div class="guide-step">
+
+<div class="guide-title">
+⚡ ACCEPT TOGETHER
+</div>
+
+<label><input type="checkbox"> The Forgotten Pools</label>
+<label><input type="checkbox"> Raptor Thieves</label>
+<label><input type="checkbox"> Fungal Spores</label>
+
+</div>
+
+<div class="guide-step">
+
+<div class="guide-title">
+☠ COMPLETE TOGETHER
+</div>
+
+<label><input type="checkbox"> Kill 15 Raptors</label>
+<label><input type="checkbox"> Kill 10 Plainstriders</label>
+<label><input type="checkbox"> Loot 8 Quest Items</label>
+
+</div>
+
+<div class="guide-step">
+
+<div class="guide-title">
+🚩 TURN IN
+</div>
+
+<label><input type="checkbox"> Return to Crossroads</label>
+<label><input type="checkbox"> Train New Skills</label>
+<label><input type="checkbox"> Take Flight Path</label>
+
+</div>
+
+</div>
+
+<div class="rightbar">
+
+<div class="card">
+
+<h3>Weapon Progression</h3>
+
+<div class="weapon">
+#1 Wingblade
+</div>
+
+<div class="weapon">
+#2 Outlaw Sabre
+</div>
+
+<div class="weapon">
+#3 Vendor Upgrade
+</div>
+
 </div>
 
 <div class="card">
 
-<h3>Level Brackets</h3>
+<h3>Talent Path</h3>
 
-<div class="route">1-10 Durotar</div>
-<div class="route">10-20 Barrens</div>
-<div class="route">20-30 Stonetalon</div>
-<div class="route">30-40 Desolace</div>
-<div class="route">40-50 Tanaris</div>
-<div class="route">50-60 Un'Goro</div>
-
-</div>
+<p>10-14 Improved Sinister Strike</p>
+<br>
+<p>15-19 Precision</p>
+<br>
+<p>20-29 Dual Wield Specialization</p>
 
 </div>
-
-<div class="main">
 
 <div class="card">
 
-<h2>Horde Speed Route 10-20</h2>
+<h3>Route Stats</h3>
 
-</div>
-
-<div class="task">
-
-<h3>Accept Together</h3>
-
-<label>
-<input type="checkbox">
-The Forgotten Pools
-</label>
-
-<br><br>
-
-<label>
-<input type="checkbox">
-Raptor Thieves
-</label>
-
-</div>
-
-<div class="task">
-
-<h3>Complete Together</h3>
-
-<label>
-<input type="checkbox">
-Kill Raptors
-</label>
-
-<br><br>
-
-<label>
-<input type="checkbox">
-Loot Feathers
-</label>
-
-</div>
-
-<div class="task">
-
-<h3>Turn In Together</h3>
-
-<label>
-<input type="checkbox">
-Return Crossroads
-</label>
+<p>Zone: Barrens</p>
+<br>
+<p>XP/Hour: Excellent</p>
+<br>
+<p>Travel Efficiency: 92%</p>
 
 </div>
 
@@ -230,17 +372,18 @@ Return Crossroads
 
 <div class="popup">
 
-<h3>Next Objective</h3>
+<div class="popup-title">
+NEXT OBJECTIVE
+</div>
 
-✅ Accept Quests
-
+☐ Accept 3 Quests
+<br><br>
+☐ Kill Raptors
+<br><br>
+☐ Return To Crossroads
 <br><br>
 
-⬜ Kill Raptors
-
-<br><br>
-
-⬜ Return To Crossroads
+<b>ETA: 12 Minutes</b>
 
 </div>
 
